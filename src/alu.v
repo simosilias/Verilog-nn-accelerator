@@ -1,7 +1,8 @@
 module alu (
     output reg zero, ovf, 
     output reg signed [31:0] result,
-    input wire signed [31:0] op1,op2, [3:0] alu_op
+    input wire signed [31:0] op1,op2, 
+    input wire [3:0] alu_op
     );
 
     parameter[3:0] ALUOP_AND = 4'b1000;
