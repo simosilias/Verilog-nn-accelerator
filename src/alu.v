@@ -22,6 +22,10 @@ module alu (
 
     always @(*) 
     begin
+        result = 32'd0;
+        ovf = 1'd0;
+        zero = 1'd0;
+        fullprod = 64'd0;
         case (alu_op)
         ALUOP_ADD: 
         begin
