@@ -1,8 +1,19 @@
 module regfile
         #(parameter DATAWIDTH = 32)
-        (output reg [DATAWIDTH-1:0] readData1, [DATAWIDTH-1:0] readData2, [DATAWIDTH-1:0] readData3, [DATAWIDTH-1:0] readData4,
-        input clk, resetn, write, [3:0] readReg1, [3:0] readReg2, [3:0] readReg3, [3:0] readReg4, [3:0] writeReg1, [3:0] writeReg2, [DATAWIDTH-1:0] writeData1, [DATAWIDTH-1:0] writeData2);
-
+        (output reg [DATAWIDTH-1:0] readData1, 
+        output reg [DATAWIDTH-1:0] readData2, 
+        output reg [DATAWIDTH-1:0] readData3, 
+        output reg [DATAWIDTH-1:0] readData4,
+        input clk, resetn, write,
+        input wire [3:0] readReg1, 
+        input wire[3:0] readReg2, 
+        input wire [3:0] readReg3, 
+        input wire [3:0] readReg4,
+        input wire [3:0] writeReg1,
+        input wire [3:0] writeReg2,
+        input wire [DATAWIDTH-1:0] writeData1,
+        input wire [DATAWIDTH-1:0] writeData2
+);
 
 reg [DATAWIDTH-1:0] registers [15:0];
 integer i;
