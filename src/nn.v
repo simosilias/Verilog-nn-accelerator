@@ -235,7 +235,7 @@ end
 //updating intermediate registers
 always @(posedge clk or negedge resetn) begin
     if (!resetn) begin
-        inter1 <= 32'b0; inter2 <= 32'b0; inter3 <= 32'b0; inter4 = 32'b0; inter5 = 32'b0; inter6 = 32'b0;
+        inter1 <= 32'b0; inter2 <= 32'b0; inter3 <= 32'b0; inter4 <= 32'b0; inter5 <= 32'b0; inter6 <= 32'b0;
     end else begin
         case (current_state)
             PRE_PROCESSING_LAYER: begin
