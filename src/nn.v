@@ -99,6 +99,12 @@ always @(posedge clk or negedge resetn) begin
         load_counter <= load_counter + 1;
         if(load_counter == 6)
             loaded <= 1'b1;
+        else 
+            loaded <= 1'b0;
+    end
+    else if(current_state != LOADING_WEIGHTS_AND_BIASES) begin
+        load_counter <= 0;
+        loaded <= 0;
     end
 end
 
@@ -147,8 +153,8 @@ always @(*) begin
                         nn_regfile_writeData2 = dout2;
                 end
                 3 : begin
-                        addr1 <= 8'd24;
-                        addr2 <= 8'd28;
+                        addr1 = 8'd24;
+                        addr2 = 8'd28;
                         nn_regfile_writeReg1 = 4'h4;
                         nn_regfile_writeReg2 = 4'h5;
                         nn_regfile_writeData1 = dout1;
@@ -258,25 +264,8 @@ end
 
 //Output logic 
 always @(current_state) begin
+    final_output = 32'sb0;
     case (current_state) 
-        DEACTIVATED_STATE: begin
-            final_output = 32'sb0;
-        end
-        LOADING_WEIGHTS_AND_BIASES: begin
-            final_output = 32'sb0;
-        end
-        PRE_PROCESSING_LAYER: begin
-            final_output = 32'sb0;
-        end
-        INPUT_LAYER: begin
-            final_output = 32'sb0;
-        end
-        OUTPUT_LAYER: begin
-            final_output = 32'sb0;
-        end
-        POST_PROCESSING_LAYER: begin
-            final_output = 32'sb0;
-        end
         IDLE_STATE: begin
             if(total_ovf)
                 final_output = -32'sd1;
